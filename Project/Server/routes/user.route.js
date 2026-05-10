@@ -10,8 +10,7 @@ const userRouter = express.Router(); // Route
 
 userRouter.post("/register", async (req, res) => {
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', 'https://bookmyshow-clone-em6p.onrender.com');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
   
   try {
     // Prevent admin registration through API
@@ -62,8 +61,7 @@ userRouter.post("/register", async (req, res) => {
 
 userRouter.post("/login", async (req, res) => {
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', 'http://https://bookmyshow-clone-em6p.onrender.com');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
   
   try {
     const user = await User.findOne({ email: req.body.email });
