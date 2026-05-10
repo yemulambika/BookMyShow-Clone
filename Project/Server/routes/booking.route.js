@@ -151,8 +151,8 @@ bookingRouter.post("/create-checkout-session", isAuth,  async (req, res) => {
       shipping_address_collection: {
         allowed_countries: ["IN"], // India only
       },
-      success_url: `${process.env.CLIENT_URL || "http://localhost:5173"}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.CLIENT_URL || "http://localhost:5173"}/bookshow/${showId}`,
+      success_url: `${process.env.CLIENT_URL || "http://https://bookmyshow-clone-em6p.onrender.com"}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.CLIENT_URL || "http://https://bookmyshow-clone-em6p.onrender.com"}/bookshow/${showId}`,
       metadata: {
         bookingId: booking._id.toString(),
         showId: showId,

@@ -25,31 +25,6 @@ const theatreRoutes = require('./routes/theatre.route.js')
 const showRoutes = require('./routes/show.routes.js')
 const bookingRoutes = require('./routes/booking.route.js')
 
-// const limiter = rateLimit({
-// 	windowMs: 15 * 60 * 1000, // 15 minutes
-// 	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-// 	standardHeaders: 'draft-8', // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
-// 	message: 'Too many Requests from this IP , Try Again in  15 minutes',
-// })
-
-// CORS configuration - MUST be the very first middleware
-// Handle OPTIONS preflight requests manually
-// app.use((req, res, next) => {
-//     // Set CORS headers on every request
-//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-//     res.setHeader('Access-Control-Allow-Credentials', 'true');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept');
-    
-//     // Handle preflight OPTIONS request
-//     if (req.method === 'OPTIONS') {
-//         res.status(200).end();
-//         return;
-//     }
-//     next();
-// });
-
-// Also use cors package as backup
 
 app.use(
   cors({
