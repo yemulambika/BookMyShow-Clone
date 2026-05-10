@@ -53,10 +53,7 @@ const bookingRoutes = require('./routes/booking.route.js')
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://book-my-show-clone-mauve-psi.vercel.app",
-    ],
+    origin: true,
     credentials: true,
   })
 );
