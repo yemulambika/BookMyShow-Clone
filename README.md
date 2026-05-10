@@ -50,7 +50,7 @@ https://book-my-show-clone-six-wine.vercel.app/
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/your-username/project-name
+git clone https://github.com/yemulambika/BookMyShow-Clone
 cd project-name
 npm install
 npm start
