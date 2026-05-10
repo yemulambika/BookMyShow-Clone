@@ -1,18 +1,18 @@
 import './App.css'
-import Landing from './pages/Landing'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
+import Landing from './Pages/Landing'
+import Home from './Pages/Home'
+import Login from './Pages/Login'
+import Register from './Pages/Register'
 import {BrowserRouter , Routes , Route} from "react-router-dom"
 import ProtectedRoute from './components/ProtectedRoute'
 import PublicRoute from './components/PublicRoute'
 import RoleBasedRoute from './components/RoleBasedRoute'
-import Admin from './pages/Admin'
-import Partner from './pages/Partner'
-import SingleMovie from './pages/SingleMovie'
-import BookShow from './pages/BookShow'
-import PaymentSuccess from './pages/PaymentSuccess'
-import MyBookings from './pages/User/MyBookings'
+import Admin from './Pages/Admin'
+import Partner from './Pages/Partner'
+import SingleMovie from './Pages/SingleMovie'
+import BookShow from './Pages/BookShow'
+import PaymentSuccess from './Pages/PaymentSuccess'
+import MyBookings from './Pages/User/MyBookings'
 
 function App() {
  

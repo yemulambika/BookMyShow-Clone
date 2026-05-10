@@ -1,1 +1,1 @@
-export const API_BASE_URL = "http://localhost:8001/"
+export const API_BASE_URL = "https://bookmyshow-clone-em6p.onrender.com"
