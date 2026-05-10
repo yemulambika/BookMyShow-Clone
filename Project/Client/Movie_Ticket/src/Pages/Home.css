@@ -1,0 +1,63 @@
+.home-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f7fa 0%, #ffffff 100%);
+  width: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.home-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.home-title {
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+.movies-grid {
+  margin-top: 32px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2rem !important;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .home-container {
+    padding: 20px 16px;
+  }
+}

@@ -1,0 +1,270 @@
+.my-bookings-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f7fa 0%, #ffffff 100%);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.bookings-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bookings-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.page-title {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px !important;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  display: block;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.empty-card {
+  border-radius: 16px;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* Ticket Card Styles */
+.ticket-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #667eea;
+}
+
+.ticket-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Poster Section */
+.ticket-poster-section {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.poster-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.ticket-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+.poster-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.status-tag {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ticket Details Section */
+.ticket-details {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.movie-title {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0 !important;
+  color: #1a1a1a;
+  line-height: 1.3 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ticket-divider {
+  margin: 12px 0 !important;
+  border-color: #e8e8e8;
+}
+
+.details-list {
+  width: 100%;
+  flex: 1;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.detail-icon {
+  font-size: 18px;
+  color: #667eea;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.seats-icon {
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+}
+
+.detail-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.detail-subtext {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.seats-value {
+  color: #667eea;
+  font-size: 1rem;
+}
+
+.amount-value {
+  color: #52c41a;
+  font-size: 1.1rem;
+}
+
+.booking-meta {
+  margin-top: auto;
+  padding-top: 12px;
+  text-align: center;
+}
+
+.booking-date {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ticket-poster-section {
+    height: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookings-container {
+    padding: 20px 16px;
+  }
+
+  .page-title {
+    font-size: 2rem !important;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .ticket-poster-section {
+    height: 150px;
+  }
+
+  .ticket-details {
+    padding: 14px;
+  }
+
+  .movie-title {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ticket-poster-section {
+    height: 140px;
+  }
+
+  .ticket-details {
+    padding: 12px;
+  }
+
+  .detail-item {
+    gap: 8px;
+    padding: 4px 0;
+  }
+
+  .detail-icon {
+    font-size: 16px;
+  }
+}
