@@ -38,12 +38,12 @@ A scalable movie ticket booking system built using MERN stack with real-time sea
 ---
 
 ## 📸 Screenshots
-(Add images here)
+http://localhost:5173/movie-images
 
 ---
 
 ## 🔗 Live Demo
-(Add deployed link)
+https://book-my-show-clone-six-wine.vercel.app/
 
 ---
 
