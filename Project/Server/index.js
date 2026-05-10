@@ -52,7 +52,7 @@ const bookingRoutes = require('./routes/booking.route.js')
 // Also use cors package as backup
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: process.env.CLIENT_URL || 'http://localhost:5173' || "https://book-my-show-clone-woad.vercel.app",
   credentials: true
 }));
 

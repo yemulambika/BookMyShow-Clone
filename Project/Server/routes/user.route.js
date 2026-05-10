@@ -92,7 +92,7 @@ userRouter.post("/login", async (req, res) => {
     res.cookie('jwtToken', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+       sameSite: "none",
     });
 
     res.send({
