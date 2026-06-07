@@ -3,29 +3,38 @@ const User = require("../models/user.model.js");
 
 const isAuth = async (req, res, next) => {
   const token = req.cookies.jwtToken;
-  
+
   if (!token) {
-    return res.status(401).json({ 
+    return res.status(401).json({
       success: false,
-      message: "Not authorized, no token" 
+      message: "Not authorized, no token",
     });
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.userId = decoded.userId;
-    
-    // Optionally attach user data to request
+
+    // Load the user once and attach it so downstream middleware (roleMiddleware)
+    // does not need a second DB round-trip.
     const user = await User.findById(decoded.userId).select("-password");
-    if (user) {
-      req.user = user;
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "Not authorized, user not found",
+      });
     }
-    
+    req.user = user;
+
     next();
   } catch (error) {
+    const expired = error.name === "TokenExpiredError";
     return res.status(401).json({
       success: false,
-      message: "Not authorized, token validation failed"
+      expired,
+      message: expired
+        ? "Access token expired"
+        : "Not authorized, token validation failed",
     });
   }
 };

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, message, Card, Typography, Radio } from 'antd';
 import { Link, useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux';
 import { register } from "../calls/authCalls.js";
+import { setUserData } from '../redux/userSlice.js';
 import { VideoCameraOutlined } from '@ant-design/icons';
 import './Auth.css';
 
@@ -9,14 +11,22 @@ const { Title, Text } = Typography;
 
 function Register() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [submitting, setSubmitting] = useState(false)
 
   const onSubmit = async (values) => {
+    setSubmitting(true)
     try {
       const userData = await register(values)
       if (userData && userData.success) {
         message.success(userData.message)
-        // Navigate based on role
-        if (values.role === 'partner') {
+        // Registration auto-logs the user in (cookies set by the server),
+        // so store the user and route to their dashboard.
+        if (userData.user) {
+          dispatch(setUserData(userData.user))
+        }
+        const role = userData.user?.role || values.role
+        if (role === 'partner') {
           navigate('/partner')
         } else {
           navigate('/home')
@@ -27,6 +37,8 @@ function Register() {
     } catch (error) {
       console.error("Registration error:", error)
       message.error(error?.message || "Registration failed")
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -108,6 +120,7 @@ function Register() {
                   type="primary"
                   htmlType="submit"
                   size="large"
+                  loading={submitting}
                   className="auth-button"
                 >
                   Create Account
