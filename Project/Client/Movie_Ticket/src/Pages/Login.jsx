@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Form, Input, message, Card, Typography } from "antd";
 import { Link, useNavigate } from "react-router-dom"
 import { login } from '../calls/authCalls.js';
@@ -12,8 +12,10 @@ const { Title, Text } = Typography;
 function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [submitting, setSubmitting] = useState(false)
 
   const onSubmit = async (values) => {
+    setSubmitting(true)
     try {
       const userData = await login(values)
       if (userData && userData.success) {
@@ -34,6 +36,8 @@ function Login() {
     } catch (error) {
       console.error("Login error:", error)
       message.error(error?.message || "Login failed")
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -87,6 +91,7 @@ function Login() {
                   block
                   htmlType="submit"
                   size="large"
+                  loading={submitting}
                   className="auth-button"
                 >
                   Sign In

@@ -1,28 +1,33 @@
 const User = require("../models/user.model.js");
 
-// Middleware to check if user has required role
+// Middleware to check if user has one of the required roles.
+// Reuses req.user attached by isAuth to avoid a second DB round-trip; only
+// falls back to a lookup if it is missing.
 const requireRole = (...allowedRoles) => {
   return async (req, res, next) => {
     try {
-      const user = await User.findById(req.userId).select("-password");
-      
+      let user = req.user;
       if (!user) {
-        return res.status(401).json({ message: "User not found" });
+        user = await User.findById(req.userId).select("-password");
+        req.user = user;
+      }
+
+      if (!user) {
+        return res.status(401).json({ success: false, message: "User not found" });
       }
 
       if (!allowedRoles.includes(user.role)) {
-        return res.status(403).json({ 
+        return res.status(403).json({
           success: false,
-          message: "Access denied. Insufficient permissions." 
+          message: "Access denied. Insufficient permissions.",
         });
       }
 
-      req.user = user; // Attach user object to request
       next();
     } catch (error) {
-      return res.status(500).json({ 
+      return res.status(500).json({
         success: false,
-        message: "Error checking user role" 
+        message: "Error checking user role",
       });
     }
   };
