@@ -1,12 +1,19 @@
 const express = require("express");
 const Booking = require("../models/booking.model.js");
 const Show = require("../models/show.model.js");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const isAuth = require('../middlewares/authMiddleware.js');
 const { sendBookingConfirmationEmail } = require('../services/emailService.js');
 // const { requireUser } = require('../middlewares/roleMiddleware.js');
 
 const bookingRouter = express.Router();
+
+// Lazy Stripe init so server can boot without STRIPE_SECRET_KEY (payments disabled until key is set)
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("Stripe is not configured. Set STRIPE_SECRET_KEY in Server/.env to enable payments.");
+  }
+  return require("stripe")(process.env.STRIPE_SECRET_KEY);
+}
 
 // Helper function to confirm booking (used by verify-payment)
 const confirmBooking = async (session) => {
@@ -130,6 +137,7 @@ bookingRouter.post("/create-checkout-session", isAuth,  async (req, res) => {
     }
 
     // Create Stripe checkout session with customer information
+    const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -200,7 +208,7 @@ bookingRouter.post("/verify-payment", isAuth, async (req, res) => {
     }
 
     // Retrieve the session from Stripe
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const session = await getStripe().checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status !== "paid") {
       return res.send({

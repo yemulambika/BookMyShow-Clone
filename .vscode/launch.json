@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend (Server :8001)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/Project/Server",
+      "program": "${workspaceFolder}/Project/Server/index.js",
+      "envFile": "${workspaceFolder}/Project/Server/.env",
+      "console": "integratedTerminal",
+      "restart": true
+    },
+    {
+      "name": "Frontend (Vite :5173)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/Project/Client/Movie_Ticket",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack (Server + Client)",
+      "configurations": ["Backend (Server :8001)", "Frontend (Vite :5173)"],
+      "stopAll": true
+    }
+  ]
+}

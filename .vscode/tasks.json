@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "label": "Server: npm install",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/Project/Server" },
+      "presentation": { "reveal": "silent" }
+    },
+    {
+      "label": "Client: npm install",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/Project/Client/Movie_Ticket" },
+      "presentation": { "reveal": "silent" }
+    },
+    {
+      "label": "Server: start (node index.js)",
+      "type": "shell",
+      "command": "node index.js",
+      "options": { "cwd": "${workspaceFolder}/Project/Server" },
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Client: dev (vite)",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/Project/Client/Movie_Ticket" },
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    }
+  ]
+}
